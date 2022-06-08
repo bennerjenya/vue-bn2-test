@@ -1,33 +1,60 @@
 [
   {
-    "name": "Вентиляция",
-    "slug": "ventilaciya",
+    "id": 1,
+    "name": "name1",
+    "slug": "name1",
     "submenu": [
       {
-        "name": "Вентилятор и решетки",
-        "slug": "ventilyatory_i_reshetki/"
-      },
-      {
-        "name": "Вентиляционные изделия оцинкованные",
-        "slug": "otsinkovannyye_ventilyatsionnyye_izdeliya"
-      },
-      {
-        "name": "Гибкие воздуховоды",
-        "slug": "gibkiye_vozdukhovody"
-      }
-    ]
-  },
-  {
-    "name": "Гипсокартон, ГВЛ, Профили, Подвесы",
-    "slug": "gipsokarton_gvl_profili_podvesy",
-    "submenu": [
-      {
-        "name": "Гипсокартон",
-        "slug": "gipsokarton"
-      },
-      {
-        "name": "Гипсоволокно ГВЛВ",
-        "slug": "gipsovolokno_gvlv"
+        "id": 1,
+        "name": "name2",
+        "slug": "name2",
+        "submenu": [
+          {
+            "id": 1,
+            "name": "name3",
+            "slug": "name3",
+            "submenu": [
+              {
+                "id": 1,
+                "name": "name4",
+                "slug": "name4",
+                "submenu": [
+                  {
+                    "id": 1,
+                    "name": "name5",
+                    "slug": "name5",
+                    "submenu": [
+                      {
+                        "id": 1,
+                        "name": "name6",
+                        "slug": "name6",
+                        "submenu": [
+                          {
+                            "id": 1,
+                            "name": "name7",
+                            "slug": "name7",
+                            "submenu": [
+                              {
+                                "id": 1,
+                                "name": "name8",
+                                "slug": "name8"
+                              },
+                              {
+                                "id": 2,
+                                "name": "name82",
+                                "slug": "name82"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

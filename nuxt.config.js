@@ -24,11 +24,14 @@ module.exports = {
   ** Build configuration
   */
   modules: [
+    '@nuxtjs/proxy',
     '@nuxtjs/axios',
   ],
   axios: {
+    proxy: true,
     baseURL: 'https://web.gdml.ru/api/v1',
   },
+  proxy: ['https://web.gdml.ru/api/v1'],
   router: {
   },
   build: {

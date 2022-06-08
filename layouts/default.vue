@@ -23,4 +23,7 @@ export default {
 
 <style lang="scss">
 @import "~assets/base.scss";
+.container {
+  overflow: hidden;
+}
 </style>

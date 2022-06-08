@@ -1,19 +1,21 @@
 <template>
   <main>
     <section class="slider">
-      <h2 class="visually-hidden">
-        Slides
-      </h2>
-      <ul class="slider__slides">
-        <li class="slider__slide">
-          <h3 class="slider__title">
-            Slide Title
-          </h3>
-          <p class="slider__description">
-            Lorem ipsum dolor sit amet.
-          </p>
-        </li>
-      </ul>
+      <swiper ref="mySwiper" :options="swiperOptions">
+        <swiper-slide v-for="(slide, index) in slides" :key="index">
+          <div class="slider__image">
+            <img :src="slide.image" alt="">
+          </div>
+          <div class="slider__content">
+            <div class="slider__title">
+              {{ slide.title }}
+            </div>
+            <div class="slider__description">
+              {{ slide.description }}
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper>
     </section>
 
     <section class="deals">
@@ -82,14 +84,71 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import {
+  Swiper as SwiperClass, Autoplay,
+} from 'swiper/swiper.esm';
+import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter';
+import 'swiper/swiper.min.css';
+
+SwiperClass.use([Autoplay]);
+Vue.use(getAwesomeSwiper(SwiperClass));
+const {
+  Swiper,
+  SwiperSlide,
+} = getAwesomeSwiper(SwiperClass);
+
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
+  },
+  data() {
+    return {
+      slides: [
+        {
+          // eslint-disable-next-line global-require
+          image: require('../assets/images/slide-1.jpg'),
+          description: 'Большая цветовая палитра цветов на любой вкус',
+          title: 'Цвета',
+        },
+        {
+          // eslint-disable-next-line global-require
+          image: require('../assets/images/slide-2.jpg'),
+          description: 'Большой асортимент инстументов',
+          title: 'Инстументы',
+        },
+        {
+          // eslint-disable-next-line global-require
+          image: require('../assets/images/slide-3.jpg'),
+          description: 'Качественные материалы для строительства и ремонта',
+          title: 'Материалы',
+        },
+      ],
+      swiperOptions: {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+        },
+        speed: 400,
+      },
+    };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "~assets/variables.scss";
+
+.swiper-container {
+  height: 100%;
+  z-index: 0;
+}
 
 .social-links {
   display: flex;
@@ -108,6 +167,7 @@ export default {
 
 .deals {
   margin-top: 2rem;
+
   &__items {
     list-style-type: none;
     padding: 0;
@@ -183,12 +243,16 @@ export default {
 .slider {
   height: 520px;
   overflow: hidden;
+  position: relative;
 
-  &__slides {
+  &__content {
+    position: absolute;
+    inset: 0;
     display: flex;
-    height: 100%;
-    list-style-type: none;
-    padding: 0;
+    gap: 1rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__title {
@@ -199,26 +263,27 @@ export default {
     padding-bottom: .11em;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  &__description {
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    background-color: rgba(0,0,0,0.3);
+    text-align: center;
     color: $white;
-    border: 3px solid $white;
   }
 
-  &__slide {
-    // эту хрень делать нужно уже чере компоненты и с всей мозью vue,
-    // а не на голом css(ибо часть свойств очень динамичные должны быть
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  &__description {
+    max-width: 300px;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: $white;
+    border: 3px solid $white;
+    text-align: center;
+  }
+
+  &__image, img {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background: url(https://jetimages.jetcdn.net/videos/cms_images/web_home/1225_HP_HERO_Allure_dsktp_V2.jpg) no-repeat center center;
+  }
+
+  & img {
+    object-fit: cover;
   }
 }
 

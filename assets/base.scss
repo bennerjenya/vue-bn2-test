@@ -17,7 +17,9 @@
   box-sizing: border-box;
   margin: 0;
 }
-
+body.noScroll {
+  overflow: hidden;
+}
 a {
   text-decoration: none;
 
@@ -50,4 +52,14 @@ a {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+ul {
+  padding: 0;
+}
+ul:not(:first-child) {
+  padding-left: 10px;
+}
+li {
+  list-style: none;
 }
